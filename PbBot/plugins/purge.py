@@ -10,7 +10,7 @@ class Purge(commands.Cog):
 
     def __init__(self, client):
         self.client = client
-    @commands.has_role('SudoUsers')
+    @commands.has_role('Admin')
     # @commands.has_permissions(discord.permissions.Permissions.manage_channels)
     @commands.command(name='purge', description='A basic purge command', brief='.purge <number> deletes last 5 messages by default')  # for commands
     async def purge(self, ctx, amount=5):
