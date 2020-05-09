@@ -1,3 +1,4 @@
 discord
 speedtest-cli
 pyfiglet
+pytz
