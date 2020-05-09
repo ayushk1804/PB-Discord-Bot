@@ -1,0 +1,56 @@
+{
+  "name": "Point Blank Bot",
+  "description": "A Discord Bot based on discord.py for Point Blank DSCE. Powered by - @ayushk780",
+  "keywords": [
+    "discord",
+    "Initial",
+    "ayushk780",
+    "Point Blank",
+    "DSCE",
+    "PBDSCE",
+    "best",
+    "indian",
+    "dsicord.py",
+    "plugin",
+    "modular",
+    "productivity"
+  ],
+  "repository": "https://github.com/",
+  "success_url": "https://t.me/ayushk780",
+  "website": "forum.dsce.in",
+  "env": {
+    "ENV": {
+      "description": "Setting this to ANYTHING will enable webhooks when in env mode",
+      "value": "ANYTHING"
+    },
+    "BOT_TOKEN": {
+      "description": "get this value from Discord Developer portal",
+      "value": ""
+    },
+    "AUTH_CHANNEL": {
+      "description": "should be an integer. The Disord channel id where this bot will work.",
+      "value": ""
+    },
+    "Delete_after_duration": {
+      "description": "should be an integer. Number of seconds to wait before deleting a message.",
+      "value": "10.0",
+      "required": false
+    },
+    "LOG_CHANNEL_ID": {
+      "description": "should be an integer. Number of seconds to wait before deleting a message.",
+      "value": "708250449203167262",
+      "required": false
+    }
+  },
+  "addons": [
+  ],
+  "buildpacks": [{
+    "url": "heroku/python"
+  }],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
+}

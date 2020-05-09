@@ -1,0 +1,5 @@
+discord
+discord[voice]
+aiohhtp
+speedtest-cli
+pyfiglet
