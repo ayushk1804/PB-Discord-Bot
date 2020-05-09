@@ -12,7 +12,7 @@ import speedtest
 from datetime import datetime
 
 
-class Speed(commands.Cog):
+class SpeedTest(commands.Cog):
 
     def __init__(self, client):
         self.client = client
@@ -21,11 +21,11 @@ class Speed(commands.Cog):
     @commands.command(name='speed', description='Server speedtesting utility (Takes some time so be patient)',
                       aliases=['fast', 'speedtest'], brief='.speed | .fast | .speedtest gets you the Internet speed of'\
                                                            ' server (It is however a blocking code and will take a second.')
-    async def speed(self, ctx):
-        msg = await ctx.send("Calculating the Internet speed!")
-        print("Starting speedtest!!")
+    async def speedtest(self, ctx):
+        msg = await ctx.send(f'Calculating the Internet speed! {ctx.message.author.mention} please don\'t invoke this repeatedly.')
+        print(f'{@ctx.message.author} has invoked speedtest!')
         start = datetime.now()
-        s = speedtest.Speedtest()
+        s = speedtest.Speedtest()       # TODO: Find a ansynchronous speedtester
         s.get_best_server()
         s.download()
         s.upload()
@@ -40,11 +40,9 @@ class Speed(commands.Cog):
         i_s_p_rating = client_infos.get("isprating")
         await msg.edit(content='SpeedTest completed in {} seconds\nPing: {}\nDownload: {}\nUpload: {}\nInternet Service Provider: {}\nISP Rating: {}'.format(
                 ms, ping_time, humanbytes(download_speed), humanbytes(upload_speed), i_s_p, i_s_p_rating), delete_after=Delete_after_duration)
-        await ctx.send(f'@{ctx.message.author}Speedtest done!', delete_after=2.0)
+        await ctx.send(f'{ctx.message.author.mention} Speedtest completed!', delete_after=2.0)
         await ctx.message.delete()
-    # @commands.command() #for commands
-    # @commands.Cog.listener #for event listener
 
 
 def setup(client):
-    client.add_cog(Speed(client))
+    client.add_cog(SpeedTest(client))
