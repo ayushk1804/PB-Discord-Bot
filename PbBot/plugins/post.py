@@ -69,6 +69,7 @@ class Announce(commands.Cog):
             await ctx.send("No Sudo Users were found! Add them using .addsudo", delete_after=Delete_after_duration)
         return
 
+    @commands.has_role('Admin')                                      
     @commands.command(name='AddSudoUser', description='Add Sudo Users', aliases=['addsudo'], usage='.addsudo @username')
     async def addsudouser(self, ctx, member: discord.Member):
         print(Sudo_user)
@@ -88,6 +89,7 @@ class Announce(commands.Cog):
         else:
             await ctx.send(f'Unauthorized user - {author.mention}',delete_after=Delete_after_duration)
 
+    @commands.has_role('Admin')                                      
     @commands.command(name='RemoveSudoUser', description='Removes Sudo Users', aliases=['rmsudo'],
                       usage='.rmsudo @username')
     async def remsudouser(self, ctx, member: discord.Member):
@@ -106,6 +108,7 @@ class Announce(commands.Cog):
         else:
             await ctx.send(f'Unauthorized user - {author}', delete_after=Delete_after_duration)
 
+    @commands.has_role('Admin')                                     
     @commands.command(name='Add_Channel', description='Add channel to list',
                       aliases=['addann', 'announceadd', 'addchan'],
                       usage='.addchan <use this in channel you want to announce in>')
@@ -124,8 +127,9 @@ class Announce(commands.Cog):
         else:
             await ctx.send('Unauthorized User',delete_after=Delete_after_duration)
         return
-
-    @commands.command(name='Remove', description='Removes a channel from announce list', aliases=['rmchan'],
+    
+    @commands.has_role('Admin')                                     
+    @commands.command(name='RemoveChannel', description='Removes a channel from announce list', aliases=['rmchan'],
                       usage='.rmchan <use this in the channel you want to remove from announcement list>')
     async def removechannelfromlist(self, ctx):
         if ctx.message.author.guild_permissions.administrator or ctx.message.author.id in Sudo_user:
@@ -142,7 +146,7 @@ class Announce(commands.Cog):
         else:
             await ctx.send('Unauthorized User - :no_entry:',delete_after=Delete_after_duration)
 
-    @commands.command(name='listsudousers', description='Lists all the existing sudo users',
+    @commands.command(name='ListSudoUsers', description='Lists all the existing sudo users',
                       aliases=['lsuser', 'sudols', 'lssudo'],
                       breif='.lsuser|.sudols|.lssudo to get a list of Sudo Users')
     async def listsudousers(self, ctx):
@@ -159,7 +163,7 @@ class Announce(commands.Cog):
         else:
             await ctx.send(f'Populate the Sudo User list first. Use .addsudo <@member_name>', delete_after=Delete_after_duration)
 
-    @commands.command(name='listchannels', description='Lists all the existing announcement chats', aliases=['lschan'],
+    @commands.command(name='ListChannels', description='Lists all the existing announcement chats', aliases=['lschan'],
                       usage='.lschan <to get a list of available announcement channels>')
     async def listchannels(self, ctx):
         await ctx.message.delete()
