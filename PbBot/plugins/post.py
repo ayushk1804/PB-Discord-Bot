@@ -5,11 +5,17 @@
 import discord
 from discord.ext import commands
 from datetime import datetime
+try:
+    import pytz
+except:
+    import os
+    os.system('pip install pytz')
+    import pytz
 from PbBot import Delete_after_duration, AUTH_CHANNEL
 
 #TODO: Implement database to store chanels and sudo users
 
-channels = [int(AUTH_CHANNEL)]
+channels = [int(AUTH_CHANNEL), 691005243676295279]
 Sudo_user = [259370246681395210, 645189639430340609]
 
 class Announce(commands.Cog):
@@ -17,7 +23,7 @@ class Announce(commands.Cog):
     def __init__(self, client):
         self.client = client
 
-    @commands.command(name='Announce', description='Announce to channels', aliases=['ann'], usage='.ann [message]')
+    @commands.command(name='Announce', description='Announce to channels {Format of announcements - .ann {role mention} {No space in title} {Body content}}', aliases=['ann'], usage='.ann [@role] [Title] [message]', brief='.ann @role Single_Title Body Content')
     async def post(self, ctx, forrole: discord.Role, *, message: str):
         author = ctx.message.author
         await ctx.message.delete()
@@ -43,8 +49,8 @@ class Announce(commands.Cog):
                             '''info = discord.Embed(title=f'Announcement!', color=0x992D22)
                             info.add_field(name="Title", value=mtitle, inline=False)
                             info.add_field(name="Content", value=body, inline=False)
-                            info.add_field(name="Date", value=f'{datetime.now().strftime("%x")}', inline=False)
-                            info.add_field(name="Time", value=f'{datetime.now().strftime("%X")}', inline=True)
+                            info.add_field(name="Date", value=f'{datetime.now().astimezone(tz= pytz.timezone('Asia/Kolkata')).strftime("%X")}', inline=False)
+                            info.add_field(name="Time", value=f'{datetime.now().astimezone(tz= pytz.timezone('Asia/Kolkata')).strftime("%X")}', inline=True)
                             info.add_field(name="For", value=forrole.name, inline=True)
                             info.add_field(name="By", value=author.mention, inline=True)'''
                             
@@ -54,8 +60,8 @@ class Announce(commands.Cog):
                             info.set_author(name=author.name, url=author.avatar_url, icon_url=author.avatar_url)
                             info.add_field(name="Content", value=body, inline=False)
                             info.set_footer(text=forrole.name, icon_url="https://cdn.discordapp.com/embed/avatars/0.png")
-                            info.add_field(name="Time", value=f'{datetime.now().strftime("%X")}', inline=True)
-                            info.add_field(name="Date", value=f'{datetime.now().strftime("%x")}', inline=True)
+                            info.add_field(name="Time", value=f'{datetime.utcnow().strftime("%X")}', inline=True)
+                            info.add_field(name="Date", value=f'{datetime.utcnow().strftime("%x")}', inline=True)
                             await channel.send(embed=info)
                             
                         except Exception as e:
