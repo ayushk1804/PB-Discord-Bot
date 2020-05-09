@@ -27,7 +27,7 @@ logger.addHandler(handler)
 
 if __name__ == "__main__":
     client = commands.Bot(command_prefix='.',
-                          description='This Bot is still in development. Submit your feature requests to @Aayush#0923',
+                          description='This Bot is still in development.Find the Souce Code - https://github.com/ayushk780/PB-Discord-Bot. Submit your feature requests to @Aayush#0923.',
                           case_insensitive=True
                           )
     # await client.change_presence(status=discord.Status.online, activity=discord.Game('Prefix "." Use (.help)'))
