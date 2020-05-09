@@ -15,12 +15,12 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/",
+  "repository": "https://github.com/ayushk780/PB-Discord-Bot",
   "success_url": "https://t.me/ayushk780",
   "website": "forum.dsce.in",
   "env": {
     "ENV": {
-      "description": "Setting this to ANYTHING will enable webhooks when in env mode",
+      "description": "Setting this to ANYTHING will enable heroku webhooks when in env mode",
       "value": "ANYTHING"
     },
     "BOT_TOKEN": {
@@ -28,7 +28,7 @@
       "value": ""
     },
     "AUTH_CHANNEL": {
-      "description": "should be an integer. The Disord channel id where this bot will work.",
+      "description": "should be an integer. The Disord channel id where the bot announcements will work.",
       "value": ""
     },
     "Delete_after_duration": {
@@ -37,7 +37,7 @@
       "required": false
     },
     "LOG_CHANNEL_ID": {
-      "description": "should be an integer. Number of seconds to wait before deleting a message.",
+      "description": "should be an integer.The Disord channel id where the bot logs will work.",
       "value": "708250449203167262",
       "required": false
     }
