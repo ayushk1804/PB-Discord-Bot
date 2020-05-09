@@ -7,7 +7,7 @@ import time
 
 # the secret configuration specific things
 if bool(os.environ.get("ENV", False)):
-    from PbBot.PbBot.sample_config import Config
+    from PbBot.sample_config import Config
 else:
     from config import Config
 
