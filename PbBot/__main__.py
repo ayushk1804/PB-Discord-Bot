@@ -46,7 +46,7 @@ if __name__ == "__main__":
             logger.exception(f'{extension} failed to load')
 
     @commands.has_role('Admin')
-    @client.command(name='load',brief='Unloads a Plugin (only for admins)', description='Unloads a plugin (only for admins)', usage='.unload <plugin file name>' )
+    @client.command(name='unload',brief='Unloads a Plugin (only for admins)', description='Unloads a plugin (only for admins)', usage='.unload <plugin file name>' )
     async def unload(ctx, extension):
         await ctx.message.delete()
         try:
