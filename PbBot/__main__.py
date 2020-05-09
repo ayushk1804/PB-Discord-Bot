@@ -27,13 +27,14 @@ logger.addHandler(handler)
 
 if __name__ == "__main__":
     client = commands.Bot(command_prefix='.',
-                          description='This Bot is still in development.Find the Souce Code - https://github.com/ayushk780/PB-Discord-Bot. Submit your feature requests to @Aayush#0923.',
+                          description='This Bot is still in development.Try .ploxhelp <Module name> for much better help.Find the Souce Code - https://github.com/ayushk780/PB-Discord-Bot. Submit your feature requests to @Aayush#0923.',
                           case_insensitive=True
                           )
     # await client.change_presence(status=discord.Status.online, activity=discord.Game('Prefix "." Use (.help)'))
     logger.info(f'Client prefix has been set to "."')
-
-    @client.command()
+    
+    @commands.has_role('Admin')
+    @client.command(name='load',brief='Loads a new Plugin (only for admins)', description='Loads a new Plugin (only for admins)', usage='.load <plugin file name>' )
     async def load(ctx, extension):
         await ctx.message.delete()
         try:
@@ -44,8 +45,8 @@ if __name__ == "__main__":
             await ctx.send(f'Plugin {extension} could not be loaded, Please verify the Plugin name.', delete_after=Delete_after_duration)
             logger.exception(f'{extension} failed to load')
 
-
-    @client.command()
+    @commands.has_role('Admin')
+    @client.command(name='load',brief='Unloads a Plugin (only for admins)', description='Unloads a plugin (only for admins)', usage='.unload <plugin file name>' )
     async def unload(ctx, extension):
         await ctx.message.delete()
         try:
@@ -56,12 +57,12 @@ if __name__ == "__main__":
             await ctx.send(f'Plugin {extension} could not be unloaded, Please verify the Plugin name.', delete_after=Delete_after_duration)
             logger.exception(f'{extension} failed to unload')
 
-
-    @client.command()
-    async def reload(ctx, extension: str = 'allplugs'):
+    @commands.has_role('Admin')
+    @client.command(name='reload',brief='Reloads a plugin (or all) (only for admins)', description='Reloads plugins (specific | all) (only for admins)', usage='.reload <allplugins | plugin file name>' )
+    async def reload(ctx, extension: str = 'allplugins'):
         await ctx.message.delete()
         try:
-            if extension == 'allplugs':
+            if extension == 'allplugins':
                 count=0
                 for plugins in os.listdir('./PbBot/plugins'):
                     if plugins.endswith('.py') and not plugins.startswith('_'):
