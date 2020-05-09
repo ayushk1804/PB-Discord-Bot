@@ -27,11 +27,11 @@ logger.addHandler(handler)
 
 if __name__ == "__main__":
     client = commands.Bot(command_prefix='.',
-                          description='Actually Working Great!',
+                          description='This Bot is still in development. Submit your feature requests to @Aayush#0923',
                           case_insensitive=True
                           )
     # await client.change_presence(status=discord.Status.online, activity=discord.Game('Prefix "." Use (.help)'))
-    logger.info(f'Client prefix has been set to "{client.command}"')
+    logger.info(f'Client prefix has been set to "."')
 
     @client.command()
     async def load(ctx, extension):
@@ -101,7 +101,7 @@ if __name__ == "__main__":
         text_channel_list=[]
         for botguilds in client.guilds:
             for channel in botguilds.text_channels:
-                if 'bot' in str(channel.name).lower() or 'general' in str(channel.name).lower():            # Change accordingly
+                if 'bot' in str(channel.name).lower():            # Change accordingly
                     text_channel_list.append(channel)
                     await channel.send(f'BOT ONLINE!!', delete_after=Delete_after_duration)
         print(f'Bot is online!\nLoaded {count} plugins')
