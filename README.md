@@ -1,5 +1,5 @@
 # PB-Discord-Bot
-An extensible modulat bot For Point Blank, DSCE announcements written in Python using Discord py.
+An extensible modular bot For Point Blank, DSCE announcements written in Python using Discord py.
 Made by t.me/ayushk780, Made Great by @pbcommunity.
 
 # Installtion
