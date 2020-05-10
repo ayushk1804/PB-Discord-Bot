@@ -59,7 +59,7 @@ class Figlet(commands.Cog):
             result = pyfiglet.figlet_format(text)
         if len(result) >= 2000:
             return await ctx.send(
-                f'Error: ASCII\'s count is {len(result)}. Discord\'s limitation is 2000 only.')
+                f'Error: ASCII\'s count is {len(result)}. Discord\'s limitation is 2000 only.', delete_after=Delete_after_duration)
         elif len(text) >= 14:
             await msg.edit(content="Warning: It's better not to exceed 14 characters, otherwise this will look terrible for mobiles devices. If you still agree to go forward, please say `yes` (within 30 secs).")
             try:
@@ -67,6 +67,7 @@ class Figlet(commands.Cog):
                 if confirm_text.content.lower() != "yes":
                     return await ctx.send("Okay. Won't do this", delete_after=Delete_after_duration)
             except asyncio.TimeoutError:
+                await msg.delete()
                 return await ctx.send("You took too long to reply!", delete_after=Delete_after_duration)
         await msg.edit(content=f'‌‌‎`{result}`')
 
