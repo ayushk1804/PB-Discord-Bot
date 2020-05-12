@@ -20,7 +20,7 @@ class BotStats(commands.Cog):
 
     @commands.command(name='BotStats', description='Give useful bot sys info! Delete duration is set to twice the global duration', aliases=['bstats'], brief='.bstats gives some basic bot stats')
     async def bstats(self, ctx):
-        await ctx.message.delete()
+        original_msg = ctx.message
         msg = await ctx.send("Checking Bot Stats!")
         cpufreq = psutil.cpu_freq()
         svmem = psutil.virtual_memory()
@@ -39,6 +39,7 @@ class BotStats(commands.Cog):
         stats += f'```Swap Information\nTotal: {humanbytes(swap.total)}\tAvailable: {humanbytes(swap.free)}\tUsed: {humanbytes(swap.used)}\tPercentage: {swap.percent}%```'
         await asyncio.sleep(1.5)
         await msg.edit(content=stats, delete_after=(Delete_after_duration)*3)
+        await original_msg.delete()
 
 
 def setup(client):
