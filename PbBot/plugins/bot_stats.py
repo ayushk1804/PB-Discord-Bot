@@ -35,8 +35,8 @@ class BotStats(commands.Cog):
                 f'\tUsed: {used}' \
                 f'\tFree: {free}```'
         stats += f'```CPU Information:\nPhysical cores:{psutil.cpu_count(logical=False)}\tTotal cores: {psutil.cpu_count(logical=True)}\tMax Frequency: {cpufreq.max:.2f}Mhz\nMin Frequency: {cpufreq.min:.2f}Mhz\tCurrent Frequency: {cpufreq.current:.2f}Mhz```'
-        stats += f'```Memory Information\nTotal: {humanbytes(svmem.total)}\tAvailable: {humanbytes(svmem.available)}\tUsed: {humanbytes(svmem.used)}\tPercentage: {svmem.percent}%\n```'
-        stats += f'```Swap Information\nTotal: {humanbytes(swap.total)}\tAvailable: {humanbytes(swap.free)}\tUsed: {humanbytes(swap.used)}\tPercentage: {swap.percent}%```'
+        stats += f'```Memory Information:\nTotal: {humanbytes(svmem.total)}\tAvailable: {humanbytes(svmem.available)}\tUsed: {humanbytes(svmem.used)}\tPercentage: {svmem.percent}%\n```'
+        stats += f'```Swap Information:\nTotal: {humanbytes(swap.total)}\tAvailable: {humanbytes(swap.free)}\tUsed: {humanbytes(swap.used)}\tPercentage: {swap.percent}%```'
         await asyncio.sleep(1.5)
         await msg.edit(content=stats, delete_after=(Delete_after_duration)*3)
         await original_msg.delete()
