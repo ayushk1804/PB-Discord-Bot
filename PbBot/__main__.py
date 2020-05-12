@@ -121,9 +121,6 @@ if __name__ == "__main__":
             await ctx.send(f'Hey Noob! {ctx.message.author.mention} you have not provided sufficient arguments. Go through the help menu first! Use {client.command_prefix}help', delete_after=Delete_after_duration)
             logger.info(f'Noob! {ctx.message.author.mention}, has made a missing(bad) argument request in {ctx.message} command.')
 
-        elif isinstance(error, commands.MissingPermission):
-            await ctx.send(f'Hey Noob! {ctx.message.author.mention} bot doesnt have sufficient permissions for that. Go ask the admin.', delete_after=Delete_after_duration)
-            logger.info(f'Noob! {ctx.message.author.mention}, bot was missing permission for {ctx.message} command.')
         else:
             await ctx.send(f'Hey Noob! {ctx.message.author.mention} you have triggered an unknown error. Go through the help menu first! Use {client.command_prefix}help', delete_after=Delete_after_duration)
             logger.exception(f'Noob! {ctx.message.author.mention} has triggered {error} and it was not yet handled.')
