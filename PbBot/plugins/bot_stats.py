@@ -30,7 +30,7 @@ class BotStats(commands.Cog):
         total = humanbytes(total)
         used = humanbytes(used)
         free = humanbytes(free)
-        stats = f'```Bot Uptime: {time_formatter(currentTime)}```' \
+        stats = f'```Bot Uptime: {time_formatter(currentTime-botStartTime)}```' \
                 f'```Disk Information:\nTotal disk space: {total}' \
                 f'\tUsed: {used}' \
                 f'\tFree: {free}```'
