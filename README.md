@@ -1,4 +1,4 @@
-# PB-Discord-Bot
+# PB-Discord-Bot - Develop Branch
 An extensible modular bot For Point Blank, DSCE announcements written in Python using Discord py.
 Made by t.me/ayushk780, Made Great by @pbcommunity.
 
@@ -8,7 +8,7 @@ Start your Bot app.
 
 To Use this on you local machine.
   
-  Linux Users:
+ ## Linux Users:
   -
         $ git clone https://github.com/ayushk780/PB-Discord-Bot
         $ cd PB-Discord-Bot
