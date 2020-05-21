@@ -22,17 +22,21 @@ Made by t.me/ayushk780, Made Great by @pbcommunity.
   </a>
 </p>
 
-### Heroku Support:
-This is Already heroku compatible. Fork this repo and connect your github to heroku. Deploy. Add vars from app.json to heroku settings.
+## How to deploy?:
+### Heroku:
+This is Already heroku compatible. Just follow the following steps.
+```
+Fork this repo and connect your github to heroku. 
+Deploy. 
+Add vars from app.json to heroku settings.
 Start your Bot app.
+```
 
-___
-To Use this on you local machine.
- ## Linux Users:
+### Linux Users:
  ```bash
-        $ git clone https://github.com/ayushk780/PB-Discord-Bot
-        $ cd PB-Discord-Bot
-        $ cp PbBot/sample_config.py ./config.py
-        - Now Add configurations to config.py
-        $ python3 -m PbBot
+$ git clone https://github.com/ayushk780/PB-Discord-Bot
+$ cd PB-Discord-Bot
+$ cp PbBot/sample_config.py ./config.py
+- Now Add configurations to config.py
+$ python3 -m PbBot
 ```
