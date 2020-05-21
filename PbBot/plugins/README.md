@@ -21,3 +21,12 @@ class Example(commands.Cog):
 def setup(client):
     client.add_cog(Example(client))
 ```
+---
+
+## Re/Un/Loading a new Plugin
+> Use re/un/load command to test a new Plugin. These are defined when the bot starts.
+```js
+<server-prefix>load <plugin name>
+<server-prefix>unload <plugin name>
+<server-prefix>reload <plugin name>    (no arguments would result in reloading all plugins)
+```
