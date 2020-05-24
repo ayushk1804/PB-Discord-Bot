@@ -73,6 +73,53 @@ class Url_Utilities(commands.Cog):
         else:
             await msg.edit(content="Input URL {} returned status_code {}".format(url, r.status_code), delete_after=Delete_after_duration)
 
+    @commands.command(name='UploadToOshi', description='Upload bot internal files to oshi.at', aliases=['oshi', 'fileupload'], brief='.oshi <file path> will get file url')
+    async def fupload(self, ctx, *, filepath):
+        author = ctx.message.author
+        print(filepath)
+        async def single_upload(path, ctx):
+            msg = await ctx.send("Trying...")
+            cmd = OSHI_GEN_URL.format(path)
+            status_message = await ctx.send('Running the task.')
+            process = await asyncio.create_subprocess_shell(
+                cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+            )
+            stdout, stderr = await process.communicate()
+            e = stderr.decode()
+            o = stdout.decode()
+            print(e, o)
+            # if e:
+            #     print(e)
+            #     await ctx.send(f'Error generated. \n{e}', delete_after=10.0)
+            #     return
+            if o:
+                # _o = o.split("\n")
+                # o = "`\n".join(_o)
+                await msg.edit(content=f'{author.mention} I have sent your output to your DM.', delete_after=Delete_after_duration)
+                await author.send(f'{author.mention} your output is here.\n Uploaded: {filepath}\n```{o}```')
+        def check(m):
+            return m.author == ctx.author and m.channel == ctx.channel
+        try:
+            await single_upload(filepath, ctx)      # Can be used for performing Multiple Uploads.
+            # msg = await ctx.send("Please enter the file name (Path is preferred). Max File size is 1GB.")
+            # confirm_text = await ctx.bot.wait_for("message", check=check)
+            # if confirm_text.content.lower():
+            #     try:
+            #         filesList = glob2.glob(f'./**/{confirm_text.content}', recursive=True)
+            #         if len(filesList) == 0:
+            #             await ctx.send(f'File not found. Retry...', delete_after=10.0)
+            #         elif len(filesList)>1:
+            #             await ctx.send(f"Mutiple Files found. Please enter File Path", delete_after=10.0)
+            #             info = discord.Embed(title=f'Announcement!', color=0x992D22)
+            #             info.add_field(name="Files List", value=filesList)
+            #             await ctx.send(embed=info, delete_after=60.0)
+            #         else:
+            #
+            # await confirm_text.delete()
 
+        except Exception as e:
+            print(e)
+            
+            
 def setup(client):
     client.add_cog(Url_Utilities(client))
