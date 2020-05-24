@@ -1,6 +1,6 @@
 # PB-Discord-Bot
 An extensible modular bot For Point Blank, DSCE announcements written in Python using Discord py.
-Made by t.me/ayushk780, Made Great by @pbcommunity.
+Made by [@ayushk780](https://t.me/ayushk780), Made Great by @pbcommunity.
 
 <p align="center">
   <a href="https://pypi.python.org/pypi/discord.py">
