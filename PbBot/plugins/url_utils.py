@@ -14,6 +14,7 @@ import re
 from PbBot import Delete_after_duration
 
 
+OSHI_GEN_URL = "curl -T {} https://oshi.at"
 URL_REGEX = r"(?:(?:https?|ftp):\/\/)?[\w/\-?=%.]+\.[\w/\-?=%.]+"
 # URL_REGEX = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'  # identify urls
 # MAGNET_REGEX = r"magnet:\?xt=urn:btih:[a-zA-Z0-9]*"   # for implementing magnet handling :p if we ever do it.
