@@ -30,17 +30,18 @@ class BASH(commands.Cog):
         o = stdout.decode()
         if not o:
             o = "**Tip**: \n`If you want to see the results of your code, I suggest printing them to stdout.`"
-        else:
-            _o = o.split("\n")
-            o = "`\n".join(_o)
-        OUTPUT = f"**QUERY:**\n__Command:__```{cmd}``` \n__PID:__```{process.pid}```\n**stderr:** ```{e}```\n**Output:**```{o}```"
-        if len(OUTPUT) > 2000:
+        # else:
+            # _o = o.split("\n")            # Just some formatting
+            # o = "`\n".join(_o)
+        OUTPUT = f"**QUERY:**\n__Command:__\n`{cmd}` \n__PID:__\n`{process.pid}`\n\n**stderr:** \n`{e}`\n**Output:**\n```{o}```"
+        if len(OUTPUT) > 2048:
             with io.BytesIO(str.encode(OUTPUT)) as out_file:
-                out_file.name = "exec.text"
-                await ctx.message.channel.send(file=discord.file('exec.text'))
-        await ctx.message.delete()
+                out_file.name = f'{cmd}.txt'
+                await author.send(file=discord.File(out_file))
+        else:
+            await author.send(f'Your output is here.\n{OUTPUT}')
         await msg.edit(content=f'{author.mention} I have sent your output to your DM.\n Command used : ```{cmd}```', delete_after=Delete_after_duration)
-        await author.send(f'{author.name} your output is here.\n{OUTPUT}')
+        await ctx.message.delete()
 
 
 def setup(client):
