@@ -31,9 +31,9 @@ if __name__ == "__main__":
                           case_insensitive=True
                           )
     # await client.change_presence(status=discord.Status.online, activity=discord.Game('Prefix "." Use (.help)'))
-    logger.info(f'Client prefix has been set to "."')
+    logger.info(f'Client prefix has been set to ","')
     
-    @commands.has_role('Admin')
+
     @client.command(name='load',brief='Loads a new Plugin (only for admins)', description='Loads a new Plugin (only for admins)', usage='.load <plugin file name>' )
     async def load(ctx, extension):
         await ctx.message.delete()
@@ -45,7 +45,6 @@ if __name__ == "__main__":
             await ctx.send(f'Plugin {extension} could not be loaded, Please verify the Plugin name.', delete_after=Delete_after_duration)
             logger.exception(f'{extension} failed to load')
 
-    @commands.has_role('Admin')
     @client.command(name='unload',brief='Unloads a Plugin (only for admins)', description='Unloads a plugin (only for admins)', usage='.unload <plugin file name>' )
     async def unload(ctx, extension):
         await ctx.message.delete()
@@ -57,7 +56,6 @@ if __name__ == "__main__":
             await ctx.send(f'Plugin {extension} could not be unloaded, Please verify the Plugin name.', delete_after=Delete_after_duration)
             logger.exception(f'{extension} failed to unload')
 
-    @commands.has_role('Admin')
     @client.command(name='reload',brief='Reloads a plugin (or all) (only for admins)', description='Reloads plugins (specific | all) (only for admins)', usage='.reload <allplugins | plugin file name>' )
     async def reload(ctx, extension: str = 'allplugins'):
         await ctx.message.delete()
@@ -88,7 +86,7 @@ if __name__ == "__main__":
     async def on_ready():
         count = 0
         # botStartTime = time.time()
-        await client.change_presence(status=discord.Status.online, activity=discord.Game('Prefix "." Use (.help)'))
+        await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=2, name='Prefix "," Use (,help)'))
         logger.info('Logged in as '+client.user.name+' (ID:'+str(client.user.id)+') | Connected to '+str(len(client.guilds))+' servers')
         # client.remove_command('help')      # for when helper prettify will work
         for plugins in os.listdir('./PbBot/plugins'):
@@ -102,7 +100,7 @@ if __name__ == "__main__":
         text_channel_list=[]
         for botguilds in client.guilds:
             for channel in botguilds.text_channels:
-                if 'bot' in str(channel.name).lower():            # Change accordingly
+                if 'test' in str(channel.name).lower():            # Change accordingly
                     text_channel_list.append(channel)
                     await channel.send(f'BOT ONLINE!!', delete_after=Delete_after_duration)
         print(f'Bot is online!\nLoaded {count} plugins')
@@ -111,23 +109,37 @@ if __name__ == "__main__":
         # await channel.send(f'Bot was loaded successfully', delete_after=Delete_after_duration)
 
 
-    @client.event
-    async def on_command_error(ctx, error):
-        if isinstance(error, commands.CommandNotFound):
-            await ctx.send(f'Hey Noob! {ctx.message.author.mention}. Go through the help menu first! Use {client.command_prefix}help', delete_after=Delete_after_duration)
-            logger.info(f'Noob! {ctx.message.author.mention}, has used {ctx.message} command...')
+#     @client.event
+#     async def on_command_error(ctx, error):
+#         if isinstance(error, commands.CommandNotFound):
+#             await ctx.send(f'Hey Noob! {ctx.message.author.mention}. Go through the help menu first! Use {client.command_prefix}help', delete_after=Delete_after_duration)
+#             logger.info(f'Noob! {ctx.message.author.mention}, has used {ctx.message} command...')
 
-        elif isinstance(error, commands.MissingRequiredArgument):
-            await ctx.send(f'Hey Noob! {ctx.message.author.mention} you have not provided sufficient arguments. Go through the help menu first! Use {client.command_prefix}help', delete_after=Delete_after_duration)
-            logger.info(f'Noob! {ctx.message.author.mention}, has made a missing(bad) argument request in {ctx.message} command.')
+#         elif isinstance(error, commands.MissingRequiredArgument):
+#             await ctx.send(f'Hey Noob! {ctx.message.author.mention} you have not provided sufficient arguments. Go through the help menu first! Use {client.command_prefix}help', delete_after=Delete_after_duration)
+#             logger.info(f'Noob! {ctx.message.author.mention}, has made a missing(bad) argument request in {ctx.message} command.')
 
-        elif isinstance(error, commands.MissingPermission):
-            await ctx.send(f'Hey Noob! {ctx.message.author.mention} bot doesnt have sufficient permissions for that. Go ask the admin.', delete_after=Delete_after_duration)
-            logger.info(f'Noob! {ctx.message.author.mention}, bot was missing permission for {ctx.message} command.')
-        else:
-            await ctx.send(f'Hey Noob! {ctx.message.author.mention} you have triggered an unknown error. Go through the help menu first! Use {client.command_prefix}help', delete_after=Delete_after_duration)
-            logger.exception(f'Noob! {ctx.message.author.mention} has triggered {error} and it was not yet handled.')
-        await ctx.message.delete()
+#         elif isinstance(error, commands.MissingPermission):
+#             await ctx.send(f'Hey Noob! {ctx.message.author.mention} bot doesnt have sufficient permissions for that. Go ask the admin.', delete_after=Delete_after_duration)
+#             logger.info(f'Noob! {ctx.message.author.mention}, bot was missing permission for {ctx.message} command.')
+#         else:
+#             await ctx.send(f'Hey Noob! {ctx.message.author.mention} you have triggered an unknown error. Go through the help menu first! Use {client.command_prefix}help', delete_after=Delete_after_duration)
+#             logger.exception(f'Noob! {ctx.message.author.mention} has triggered {error} and it was not yet handled.')
+#         await ctx.message.delete()
+
+        @client.event
+        async def on_command_error(ctx, error):
+            if ctx.message.author == client:
+                await ctx.send(f'Bot cannot give commands', delete_after=10.0)
+
+            elif ctx.message.author.id == 259370246681395210:
+                await ctx.send(f'Master! Sorry, but I don\'t possess any info about that command (Please consider trying ,help)...', delete_after=10.0)
+                await ctx.send(f'Error generated: {error}', delete_after=10.0)
+
+            elif isinstance(error, commands.CommandNotFound):
+                await ctx.send(f'Hey Noob! {ctx.message.author.mention} Go through the help menu first! Use ,help', delete_after=10.0)
+
+            return await ctx.message.delete()
 
     @client.event
     async def on_guild_join(guild: discord.Guild):
