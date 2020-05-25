@@ -31,7 +31,7 @@ class Inspirations(commands.Cog):
             http = urllib3.PoolManager()
             response = http.request('GET', url)
             return str(response.data.decode())
-        await ctx.send(response_getter('https://inspirobot.me/api?generate=true'), delete_after=10.0)
+        await ctx.send(response_getter('https://inspirobot.me/api?generate=true'), delete_after=Delete_after_duration)
         await ctx.message.delete()
 
 
