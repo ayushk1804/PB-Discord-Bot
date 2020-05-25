@@ -26,8 +26,8 @@ logger.addHandler(handler)
 # for custom help command visit da.gd/VSjOf
 
 if __name__ == "__main__":
-    client = commands.Bot(command_prefix='.',
-                          description='This Bot is still in development.Try .ploxhelp <Module name> for much better help.Find the Souce Code - https://github.com/ayushk780/PB-Discord-Bot. Submit your feature requests to @Aayush#0923.',
+    client = commands.Bot(command_prefix=commands.when_mentioned_or(','),
+                          description='Testing is good!!.Find the Souce Code - https://github.com/ayushk780/PB-Discord-Bot. Submit your feature requests to @Aayush#0923.',
                           case_insensitive=True
                           )
     # await client.change_presence(status=discord.Status.online, activity=discord.Game('Prefix "." Use (.help)'))
