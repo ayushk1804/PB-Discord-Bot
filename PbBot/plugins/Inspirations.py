@@ -5,14 +5,14 @@
 import discord
 from discord.ext import commands
 import random
+import urllib3
 from PbBot import Delete_after_duration
 
-class Belo(commands.Cog):
+class Inspirations(commands.Cog):
 
     def __init__(self, client):
         self.client = client
 
-    # for command listening
     @commands.command(name='Belo', description='Gives out a random(not really) sentance, Delete duration is set to twice the global duration', aliases=[], brief='.belo - takes no arguments gives out a random sentence')
     async def belo(self, ctx):
         author = ctx.message.author
@@ -24,8 +24,16 @@ class Belo(commands.Cog):
                    "Any video with “wait for it” in the title is simply too long."]
         await ctx.send(f'{author.mention} Here is something to munch on:\n```{random.choice(sayings)}```', delete_after=Delete_after_duration*2)
 
-    # @commands.Cog.listener # for event listener
+    #TODO Extract image form link and post it instead of sharing link
+    @commands.command(name='inspiroBot', aliases=['inspire'])
+    async def inpi(self, ctx):
+        def response_getter(url):
+            http = urllib3.PoolManager()
+            response = http.request('GET', url)
+            return str(response.data.decode())
+        await ctx.send(response_getter('https://inspirobot.me/api?generate=true'), delete_after=10.0)
+        await ctx.message.delete()
 
 
 def setup(client):
-    client.add_cog(Belo(client))
+    client.add_cog(Inspirations(client))
