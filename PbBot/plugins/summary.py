@@ -9,7 +9,7 @@ from summa import summarizer
 import urllib3
 from bs4 import BeautifulSoup
 import io
-Delete_after_duration = 10.0
+from PbBot import Delete_after_duration
 
 class Summary(commands.Cog):
 
