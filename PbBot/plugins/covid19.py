@@ -7,7 +7,7 @@ from discord.ext import commands
 import datetime
 import requests
 
-Delete_after_duration=10.0
+from PbBot import Delete_after_duration
 
 class Corona(commands.Cog):
 
@@ -36,7 +36,7 @@ class Corona(commands.Cog):
             global_stats.add_field(name='Tests', value=f"{r['tests']}")
             global_stats.add_field(name='Tests/Million', value=f"{r['testsPerOneMillion']}")
 
-            await message.edit(embed=global_stats, delete_after=Delete_after_duration)
+            await message.edit(content=None, embed=global_stats, delete_after=Delete_after_duration)
         except Exception as e:
             await message.edit(content="```The corona API could not be reached```", delete_after=Delete_after_duration)
             print(e)
