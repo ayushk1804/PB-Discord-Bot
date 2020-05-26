@@ -23,7 +23,7 @@ class SpeedTest(commands.Cog):
                                                            ' server (It is however a blocking code and will take a second.')
     async def speedtest(self, ctx):
         msg = await ctx.send(f'Calculating the Internet speed! {ctx.message.author.mention} please don\'t invoke this repeatedly.')
-        print(f'{@ctx.message.author} has invoked speedtest!')
+        print(f'{ctx.message.author} has invoked speedtest!')
         start = datetime.now()
         s = speedtest.Speedtest()       # TODO: Find a ansynchronous speedtester
         s.get_best_server()
