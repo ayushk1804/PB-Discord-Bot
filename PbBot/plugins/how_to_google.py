@@ -8,7 +8,7 @@ import requests
 import json
 import os
 import asyncio
-form PbBot import Delete_after_duration
+from PbBot import Delete_after_duration
 
 class HowToGoogle(commands.Cog):
 
