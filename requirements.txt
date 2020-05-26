@@ -2,6 +2,7 @@ discord.py
 speedtest-cli
 pyfiglet
 pytz
+psutil
 summa
 bs4
 urllib3
