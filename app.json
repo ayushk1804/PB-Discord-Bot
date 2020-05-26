@@ -40,6 +40,11 @@
       "description": "should be an integer.The Disord channel id where the bot logs will work.",
       "value": "708250449203167262",
       "required": false
+    },
+    "LOGGER_LEVEL": {
+      "description": "Decribes the level on which logs should be made. [CRITICAL, ERROR, WARNING, INFO, and DEBUG] and if not specified defaults to WARNING",
+      "value": "WARNING",
+      "required": false
     }
   },
   "addons": [
