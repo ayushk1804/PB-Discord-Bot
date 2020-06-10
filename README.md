@@ -24,7 +24,7 @@ Made by t.me/ayushk780, Made Great by @pbcommunity.
 
 ## How to deploy?:
 ### Heroku:
-This is Already heroku compatible. Just follow the following steps.
+This is Already heroku compatible. Just follow the steps below:
 ```
 Fork this repo and connect your github to heroku. 
 Deploy. 
