@@ -1,0 +1,60 @@
+# A list of available and upcoming commands of PbBot :
+- ## Available Features `ò_ô` : ( You can use these right now. )
+    - .alive to check if bot is online and number of plugins loaded.
+    - .belo to get a random quote/inspiration.
+    - .bstats gives some basic bot stats
+    - .btime to Get bot time.
+    - .fig to style some text.
+    - .ping to get server latency.
+    - Text animations:
+        - .pb to get an animated text with some random competition names.
+        - .smoon to get animated moon faces.
+        - .tmoon to get animated moon phases.
+        - .animearth to get animated earth faces.
+    - .speed to get the server internet speed.
+    - #### Admin only commands :
+        - Announcements - Selected Users can make announcements to selected channels and admins/owner have the right to add channels and announcers.
+        - Purge - It can delete a specific (default = 5) number of messages from the given channel. ( This is a Server only command. )
+    - #### Developer only Commands :
+        - Add Plugins
+        - Remove Plugins
+        - Reload Plugins
+
+
+- ## Upcoming Features `✌(-‿-)✌` :
+    - C-list - Gives a list of upcoming Coding competions ( In a nice and concise embed menu ).
+    - Covid-19 Related :                     
+        - Corona Stats - sends a nice embed with all the stats required.
+        ( Users can ask for today's/yesterday's results and can specifically query for particualr stats too. )
+            - WorldWide.
+            - Country specific.
+        - Corona Related news - Can send country specific news.
+    - Custom Help Command - Who likes to see that blocky help message? Nobody!!
+    - Evaluator - Can evaluate small python code snipets.
+    - How To Google - Gives a lmgtfy link to mock.
+    - Paste Plugins:
+            - Del.dog - Allows users to directly paste/pull data from del.dog
+            - pastebin - Allows users to directly paste/pull data from Pastebin.
+    - Quotes - Updated 'Belo' module to have inspirational quotes, insults and random quotes.
+    - Search Helpers :
+        - Urban Dictionary - Allows users to pull definitions of a word from urban dictionary.
+        - Wikipedia - Searches the query in wikipedia and returns a menu with all the queries found.
+    - Server Info - Gives a nice embed containing all useful info regarding a discord server.
+    - SpaceX Related : ( Cause who doesn't like a bot of Musk. )
+        - SpaceXLatest - Gives info about latest SpaceX launches.
+        - SpaceXnext - Gives info about upcomming SpaceX launches.
+    - Summary - Gives a quick summary of the query sent and gives a summary of length of user's choice ( User specifies the size in percentage of original text size ). The summary provided is quite usable. ( use del.dog for long query text. )
+    - Url-Utilities :
+        - Shortner - Can shorten long urls and give a short url for that.
+            - Users can use if they want to use dsce shortner ( s.dsce.in ) or da.gd as preferred shortner.
+        - UnShortner ( Long-URL ) - Can expand short url from da.gd 
+        - Oshi-Uploader - Can upload bots internal files to oshi.at servers. ( Upload size is limited to 1GB. )
+    - Waifu - Posts a AI generated Anime girl image to the channel. ( Bit of an odd feature. `(ﾉ◕ヮ◕)ﾉ*:・ﾟ✧` )
+
+    - #### Moderator only : 
+        - Delete Specific User messages - Allows mods to delete a specific user's messages from the channel. ( Hide you spammers! )
+    - #### Developer only Commands :
+        - Bash - Allows the devs to use the full linux shell of our bot. ( Might not be available in Official PbBot. )
+    
+- ## Planned Features :
+    - 	`¯\_(ツ)_/¯`
