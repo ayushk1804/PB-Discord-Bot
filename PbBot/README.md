@@ -1,4 +1,7 @@
 # A list of available and upcoming commands of PbBot :
+- [Avaiable Features](https://github.com/ayushk780/PB-Discord-Bot/tree/master/PbBot#available-features-%C3%B2_%C3%B4---you-can-use-these-right-now-)
+- [Upcoming Features](https://github.com/ayushk780/PB-Discord-Bot/blob/master/PbBot/README.md#upcoming-features--%E2%80%BF--)
+- [Planned Features](https://github.com/ayushk780/PB-Discord-Bot/blob/master/PbBot/README.md#planned-features-)
 - ## Available Features `ò_ô` : ( You can use these right now. )
     - .alive to check if bot is online and number of plugins loaded.
     - .belo to get a random quote/inspiration.
